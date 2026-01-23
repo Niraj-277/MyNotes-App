@@ -15,6 +15,8 @@ app.use(express.json())
 //!mount routers
 app.use('/api/v1/auth',require('./Routes/authRoutes'));
 
+app.use('/api/v1/notes',require('./Routes/noteRoutes'))
+
 app.get('/',(req,res)=>{
     res.send('api is running...')
 })
