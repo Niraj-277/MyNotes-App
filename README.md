@@ -1,5 +1,3 @@
-Markdown# MyNotes API 📝
-
 A production-ready RESTful API built with Node.js, Express, and MongoDB. This application allows users to register, securely log in, and manage their private notes. It features robust Role-Based Access Control (RBAC), JWT Authentication, and Data Isolation (users can only access their own data).
 
 ## 🚀 Features
@@ -23,7 +21,6 @@ A production-ready RESTful API built with Node.js, Express, and MongoDB. This ap
 Follow these steps to run the project locally.
 
 ### 1. Clone the repository
-```bash
 git clone [https://github.com/YOUR_USERNAME/MyNotes-API.git](https://github.com/YOUR_USERNAME/MyNotes-API.git)
 cd notes-api
 2. Install Dependencies
