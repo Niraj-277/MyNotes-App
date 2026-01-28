@@ -46,3 +46,73 @@ exports.getNotes=async(req,res,next)=>{
         })
     }
 }
+//@desc update note
+//@route PUt /api/v1/notes/:id
+
+exports.updateNote=async (req,res,next)=>{
+    try{
+        let note = await Note.findById(req.params.id);
+
+        if(!note){
+            return res.status(404).json({
+                success:false,
+                error:'note not found '
+             })
+        }
+
+        //The ownership check
+        //Make sure the user is the owner of the note 
+        if(note.user.toString()!==req.user.id){
+            return res.status(400).json({
+                success:false,
+                error:'user is not authorised'
+            })
+        }
+
+        note = await Note.findByIdAndUpdate(req.params.id,req.body,{
+            new:true,
+            runValidators:true,
+        });
+        res.status(200).json({
+            success:true,
+            data:note
+        })
+    }catch(err){
+        res.status(400).json({
+            success:false,
+            error:err.message
+        })
+    }
+}
+
+//@desc Delete note
+//@route api/v1/notes/:id
+
+exports.deleteNote=async(req,res,next)=>{
+    try{
+        const note=await Note.findById(req.params.id);
+
+        if(!note){
+            res.status(404).json({
+                success:false,
+                error:'Note not found'
+            })
+        }
+
+        //the ownership check
+        if(note.user.toString() !== req.user.id){
+            return res.status(401).json({
+                success:false,error:'Note is not authorised to delete'
+            })
+        }
+        await note.deleteOne();
+
+        res.status(200).json({
+            success:true,
+            data:{}
+        })
+
+    }catch(err){
+        res.status(400).json({success:false,error:err.message})
+    }
+}
