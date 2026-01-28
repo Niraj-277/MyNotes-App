@@ -7,7 +7,7 @@ const Note=require('../models/note')
 exports.createNote=async(req,res,next)=>{
     try{
         //Add user to req.body
-        // This is the "Stamping " process
+        // This is the "Stamping " procesks
         req.body.user=req.user.id;
 
         const note=await Note.create(req.body);
