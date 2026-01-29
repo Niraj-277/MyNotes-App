@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // 1. PUT YOUR RENDER URL HERE
-const API_URL = "https://YOUR-APP-NAME.onrender.com/api/v1"; 
+const API_URL = "https://mynotes-app-mgm7.onrender.com/api/v1"; 
 
 function App() {
   const [token, setToken] = useState(null);
