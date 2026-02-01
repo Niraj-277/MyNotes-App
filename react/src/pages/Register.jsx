@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-const API_URL = "https://YOUR-APP-NAME.onrender.com/api/v1"; 
+const API_URL = "https://mynotes-app-mgm7.onrender.com/api/v1"; 
 
 function Register() {
   const [name, setName] = useState('');

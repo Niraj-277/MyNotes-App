@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = "https://YOUR-APP-NAME.onrender.com/api/v1"; 
+const API_URL = "https://mynotes-app-mgm7.onrender.com/api/v1"; 
 
 function Dashboard() {
   const [notes, setNotes] = useState([]);
