@@ -1,10 +1,18 @@
 const User=require('../models/user');
 
+const {registerSchema,loginSchema}=require('../utils/validators')
+
 // @desc  Register User
 // @route Post /api/v1/auth/register
 
 exports.register=async(req,res,next)=>{
     try{
+        //1.validate Input
+        const {error}=registerSchema.validate(req.body);
+        if(error){
+            return res.status(400).json({success:false,error:error.details[0].message})
+        }
+
         const {name,email,password,role}=req.body;
 
         //1. Create user
@@ -29,6 +37,15 @@ exports.register=async(req,res,next)=>{
 
 exports.login=async(req,res,next)=>{
     try{
+        const {error}=loginSchema.validate(req.body);
+        if(error){
+            return res.status(400).json({
+                success:false,error:error.details[0].message
+            })
+        }
+
+
+
         const {email,password}=req.body;
 
         //Validate email &password

@@ -6,6 +6,13 @@ const Note=require('../models/note')
 
 exports.createNote=async(req,res,next)=>{
     try{
+        //1.validate Input
+        const {error}=noteSchema.validate(req.body);
+        if(error){
+            return res.status(400).json({success:false,error:error.details[0].message});
+        }
+
+
         //Add user to req.body
         // This is the "Stamping " procesks
         req.body.user=req.user.id;
