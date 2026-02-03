@@ -1,5 +1,7 @@
 const Note=require('../models/note')
 
+const {noteSchema}=require('../utils/validators')
+
 // @desc Create new note
 // @route Post /api/v1/notes
 // @access Private
